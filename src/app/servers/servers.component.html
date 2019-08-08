@@ -1,8 +1,10 @@
-<input type="text" (input) = "handleChange($event)">
+<div class="container">
+<input type="text" (input) = "handleChange($event)"><br/><br/>
 <button (click) = "onCreateServer()" class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>
+ <!-- * to mention it as structural directive which changes DOM itself -->
 <p *ngIf="serverCreated; else noServer">Server Created with name {{serverName}}</p>
 <ng-template #noServer>
     <p>No server added</p>
 </ng-template>
-<app-server></app-server>
-<app-server></app-server>
+<app-server *ngFor = "let server of servers"></app-server>
+</div>
